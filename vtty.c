@@ -105,7 +105,7 @@ static void vtty_close(struct tty_struct *tty, struct file *filp)
 	return;
 }
 
-static int vtty_write(struct tty_struct *tty, const unsigned char *buf, int count)
+static ssize_t vtty_write(struct tty_struct *tty, const u8 *buf, size_t count)
 {
 	// the TTY layer manages -EAGAIN and (non-)blocking writes
 	struct vtty_port *port = &ports[tty->index];
